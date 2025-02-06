@@ -8,6 +8,7 @@ from .models import Note
 
 # Create your views here.
 
+# Create 
 # ListCreateAPIView will not only create one but will also list all of the created if we want as well
 class NoteListCreate(generics.ListCreateAPIView):
     serializer_class = NoteSerializer
@@ -23,6 +24,17 @@ class NoteListCreate(generics.ListCreateAPIView):
             serializer.save(author=self.request.user)
         else:
             print(serializer.errors)
+
+
+# Delete
+class NoteDelete(generics.DestroyAPIView):
+    serializer_class = NoteSerializer
+    permission_classes = [IsAuthenticated]
+
+# This is specifying only the notes that belong to the logged in author (by filtering the notes list)
+    def get_queryset(self):
+        user = self.request.user
+        return Note.objects.filter(author=user)
 
 
 
