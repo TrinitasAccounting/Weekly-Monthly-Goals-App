@@ -37,6 +37,25 @@ class NoteDelete(generics.DestroyAPIView):
         return Note.objects.filter(author=user)
 
 
+# PATCH for a note (editting)
+# This is wrong for the edit patch
+# class ItemPartialUpdateView(generics.UpdateAPIView):
+#     serializer_class = NoteSerializer
+#     permission_classes = [IsAuthenticated]
+
+#     def patch(self, request, note_id):
+#         try:
+#             note = Note.objects.get(pk=note_id)
+#         except Note.DoesNotExist:
+#             return Response(status=status.HTTP_404_NOT_FOUND)
+
+#         serializer = NoteSerializer(note,data=request.data, partial=True)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 
 
 class CreateUserView(generics.CreateAPIView):
