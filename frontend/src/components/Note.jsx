@@ -3,7 +3,7 @@
 import React from 'react';
 import { useState } from 'react';
 import '../styles/Note.css';
-import EditForm from './EditForm';
+// import EditForm from './EditForm';
 
 function Note({ note, onDelete }) {
 

@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import api from "../api"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 import '../styles/Form.css';
 import LoadingIndicator from "./LoadingIndicator";
@@ -66,6 +66,15 @@ function Form({ route, method }) {
                 type='submit'
                 className="form-button"
             >{name}</button>
+            {method === "login" ?
+                <div>
+                    <h4>Create a New Account: <Link to="/register" >Sign Up </Link></h4>
+                </div>
+                :
+                <div>
+                    <h4>Already have an Account: <Link to="/login" >Sign In </Link></h4>
+                </div>
+            }
         </form>
     )
 

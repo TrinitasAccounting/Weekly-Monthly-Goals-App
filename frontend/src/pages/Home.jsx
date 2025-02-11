@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom'
 import api from "../api";
 import Note from "../components/Note";
 import '../styles/Home.css';
@@ -73,6 +74,10 @@ function Home() {
 
     return (
         <>
+            <Link to="/logout" >
+                <button style={{ color: "white", position: "absolute", top: "5%", right: "5%", width: "100px", height: "40px", fontSize: "18px", backgroundColor: "#8f92af", border: "none" }} >Logout</button>
+            </Link>
+
             <form onSubmit={createNote}>
                 <label htmlFor="title">Title</label>
                 <br />
